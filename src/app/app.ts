@@ -15,7 +15,6 @@ export class App {
       date: '01.09.2025',
       description: 'Користувач створив заявку',
       icon: 'add_circle',
-      completed: true,
       status: 'success'
     },
     {
@@ -23,7 +22,6 @@ export class App {
       date: '02.09.2025',
       description: 'Менеджер взяв у роботу',
       icon: 'hourglass_top',
-      completed: true,
       status: 'active'
     },
     {
@@ -31,7 +29,6 @@ export class App {
       date: '03.09.2025',
       description: 'Заявку виконано',
       icon: 'check_circle',
-      completed: false,
       status: 'warning'
     }
   ];

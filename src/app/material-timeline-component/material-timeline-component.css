@@ -47,27 +47,44 @@
   border-left: 3px solid;
 }
 
+.timeline-stepper {
+  background: transparent;
+
+  .mat-step-icon {
+    background: none;
+  }
+}
+
+.timeline-step-icon {
+  font-size: 20px;
+
+  &.done {
+    color: var(--mat-sys-primary);
+  }
+
+  &.error {
+    color: #d32f2f;
+  }
+}
+
+/* статуси timeline */
 .success {
-  color: var(--mat-sys-primary);
   border-left-color: var(--mat-sys-primary);
 }
 
 .active {
-  color: var(--mat-sys-secondary);
   border-left-color: var(--mat-sys-secondary);
 }
 
 .warning {
-  color: #f9a825;
   border-left-color: #f9a825;
 }
 
 .error {
-  color: #d32f2f;
   border-left-color: #d32f2f;
 }
 
 .pending {
-  color: #9e9e9e;
   border-left-color: #9e9e9e;
 }
+

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {MatStep, MatStepLabel, MatStepper} from '@angular/material/stepper';
+import {MatStep, MatStepLabel, MatStepper, MatStepperIcon} from '@angular/material/stepper';
 import {MatIcon} from '@angular/material/icon';
 import {NgClass} from '@angular/common';
 
@@ -10,7 +10,6 @@ export interface TimelineItem {
   description?: string;
   date?: string;
   icon?: string;
-  completed?: boolean;
   status: TimelineStatus;
 }
 
@@ -21,7 +20,8 @@ export interface TimelineItem {
     MatStep,
     MatIcon,
     MatStepLabel,
-    NgClass
+    NgClass,
+    MatStepperIcon
   ],
   templateUrl: './material-timeline-component.html',
   styleUrl: './material-timeline-component.css',

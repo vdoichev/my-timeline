@@ -3,15 +3,38 @@
   [linear]="false"
   [selectedIndex]="timelines.length - 1">
 
+  <!-- DEFAULT ICON -->
+  <ng-template matStepperIcon="number" let-index="index">
+    <mat-icon class="timeline-step-icon">
+      {{ timelines[index]?.icon || 'circle' }}
+    </mat-icon>
+  </ng-template>
+
+  <!-- DONE ICON -->
+  <ng-template matStepperIcon="done" let-index="index">
+    <mat-icon class="timeline-step-icon done">
+      {{ timelines[index]?.icon || 'check_circle' }}
+    </mat-icon>
+  </ng-template>
+
+  <!-- ERROR ICON -->
+  <ng-template matStepperIcon="error">
+    <mat-icon class="timeline-step-icon error">
+      error
+    </mat-icon>
+  </ng-template>
+
   @for (item of timelines; track item.title){
     <mat-step
-      [completed]="item.completed">
+      [completed]="item.status === 'success'"
+      [hasError]="item.status === 'error'"
+    >
 
       <ng-template matStepLabel>
         <div class="timeline-label">
-          <mat-icon class="timeline-icon" [ngClass]="item.status">
-            {{ item.icon || 'circle' }}
-          </mat-icon>
+<!--          <mat-icon class="timeline-icon" [ngClass]="item.status">-->
+<!--            {{ item.icon || 'circle' }}-->
+<!--          </mat-icon>-->
 
           <div class="timeline-header">
             <div class="title">{{ item.title }}</div>
