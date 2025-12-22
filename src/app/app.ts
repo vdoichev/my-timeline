@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import {MaterialTimelineComponent} from './material-timeline-component/material-timeline-component';
+import {MaterialTimelineComponent, TimelineItem} from './material-timeline-component/material-timeline-component';
 
 @Component({
   selector: 'app-root',
@@ -9,27 +9,30 @@ import {MaterialTimelineComponent} from './material-timeline-component/material-
 })
 export class App {
   protected readonly title = signal('my-timeline');
-  timeline = [
+  timeline: TimelineItem[] = [
     {
       title: 'Заявку створено',
       date: '01.09.2025',
       description: 'Користувач створив заявку',
       icon: 'add_circle',
-      completed: true
+      completed: true,
+      status: 'success'
     },
     {
       title: 'В обробці',
       date: '02.09.2025',
       description: 'Менеджер взяв у роботу',
       icon: 'hourglass_top',
-      completed: true
+      completed: true,
+      status: 'active'
     },
     {
       title: 'Завершено',
       date: '03.09.2025',
       description: 'Заявку виконано',
       icon: 'check_circle',
-      completed: false
+      completed: false,
+      status: 'warning'
     }
   ];
 

@@ -1,16 +1,16 @@
 <mat-vertical-stepper
   class="timeline-stepper"
   [linear]="false"
-  [selectedIndex]="items.length - 1">
+  [selectedIndex]="timelines.length - 1">
 
-  @for (item of items; track item.title){
+  @for (item of timelines; track item.title){
     <mat-step
       [completed]="item.completed">
 
       <ng-template matStepLabel>
         <div class="timeline-label">
-          <mat-icon class="timeline-icon">
-            {{ item.icon || 'radio_button_checked' }}
+          <mat-icon class="timeline-icon" [ngClass]="item.status">
+            {{ item.icon || 'circle' }}
           </mat-icon>
 
           <div class="timeline-header">
@@ -22,7 +22,7 @@
         </div>
       </ng-template>
 
-      <div class="timeline-content">
+      <div class="timeline-content" [ngClass]="item.status">
         {{ item.description }}
       </div>
 
