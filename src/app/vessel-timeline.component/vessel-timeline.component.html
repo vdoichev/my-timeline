@@ -20,20 +20,16 @@
               <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
             </div>
           }
+
+          @if (!isLeft(i) && !isRepeatedStatus(i)) {
+            <div class="timeline-status align-right">
+              {{ statusLabel(event.status) }}
+            </div>
+          }
         </div>
 
         <!-- CENTER -->
         <div class="center">
-          @if (!isRepeatedStatus(i)) {
-            <div
-              class="timeline-status"
-              [class.left]="isLeft(i)"
-              [class.right]="!isLeft(i)"
-            >
-              {{ statusLabel(event.status) }}
-            </div>
-          }
-
           <div
             class="timeline-dot"
             [class.repeated]="isRepeatedStatus(i)"
@@ -55,6 +51,12 @@
           @if (!isLeft(i)) {
             <div class="timeline-card">
               <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
+            </div>
+          }
+
+          @if (isLeft(i) && !isRepeatedStatus(i)) {
+            <div class="timeline-status align-left">
+              {{ statusLabel(event.status) }}
             </div>
           }
         </div>

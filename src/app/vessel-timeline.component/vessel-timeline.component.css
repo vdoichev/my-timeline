@@ -16,7 +16,7 @@
 
 .slot {
   display: flex;
-  align-items: stretch;
+  align-items: center;
 }
 
 .slot.left {
@@ -25,6 +25,30 @@
 
 .slot.right {
   justify-content: flex-start;
+}
+
+
+.timeline-status {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+/* зліва від center */
+.timeline-status.align-right {
+  margin-left: auto;   /* 🔥 */
+  padding-right: 0;    /* 0px до center */
+  text-align: right;
+}
+
+/* справа від center */
+.timeline-status.align-left {
+  margin-right: auto;  /* 🔥 */
+  padding-left: 0;     /* 0px до center */
+  text-align: left;
 }
 
 .center {
@@ -89,26 +113,6 @@
   display: flex;
   justify-content: center;
   margin-bottom: 16px;
-}
-
-.timeline-status {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
-  opacity: 0.8;
-}
-
-.timeline-status.left {
-  right: calc(var(--dot-size) + var(--dot-gap));
-  text-align: right;
-}
-
-.timeline-status.right {
-  left: calc(var(--dot-size) + var(--dot-gap));
-  text-align: left;
 }
 
 .timeline-event[data-status='arrival'] { color: #1976d2; }
