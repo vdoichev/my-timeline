@@ -70,12 +70,12 @@ export class App {
       description: 'Судно пройшло Босфор',
       status: 'arrival'
     },
-    {
-      id: '2',
-      actualDateTime: new Date('2025-09-01T08:30'),
-      description: 'Судно прибуло на Суліну',
-      status: 'arrival'
-    },
+    // {
+    //   id: '2',
+    //   actualDateTime: new Date('2025-09-01T08:30'),
+    //   description: 'Судно прибуло на Суліну',
+    //   status: 'arrival'
+    // },
     {
       id: '3',
       actualDateTime: new Date('2025-09-01T10:00'),

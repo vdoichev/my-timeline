@@ -24,6 +24,16 @@
 
         <!-- CENTER -->
         <div class="center">
+          @if (!isRepeatedStatus(i)) {
+            <div
+              class="timeline-status"
+              [class.left]="isLeft(i)"
+              [class.right]="!isLeft(i)"
+            >
+              {{ statusLabel(event.status) }}
+            </div>
+          }
+
           <div
             class="timeline-dot"
             [class.repeated]="isRepeatedStatus(i)"
@@ -67,7 +77,6 @@
     <div class="datetime">
       {{ event.actualDateTime | date:'dd.MM.yyyy HH:mm' }}
     </div>
-    <span class="status">{{ statusLabel(event.status) }}</span>
   </div>
 
   <div class="description">{{ event.description }}</div>
