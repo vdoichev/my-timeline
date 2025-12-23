@@ -67,7 +67,7 @@ export class App {
     {
       id: '1',
       actualDateTime: new Date('2025-09-01T08:30'),
-      description: 'Судно прибуло в порт. sdfadfadfadfadfadf adf ad fad fdddddddddddddddddddddd ddddddddddddddadfsvadfsafs dvafdsafdddddddddddd ddddddddddddddddd ',
+      description: 'Судно прибуло в порт.',
       status: 'arrival'
     },
     {
@@ -78,6 +78,12 @@ export class App {
     },
     {
       id: '3',
+      actualDateTime: new Date('2025-09-01T10:00'),
+      description: 'Початок вантажних робіт',
+      status: 'handling'
+    },
+    {
+      id: '4',
       actualDateTime: new Date('2025-09-02T18:00'),
       description: 'Судно покинуло порт',
       status: 'departure'

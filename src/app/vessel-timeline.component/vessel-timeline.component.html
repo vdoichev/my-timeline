@@ -15,13 +15,13 @@
 
       <div
         class="timeline-event"
-        [class.left]="i % 2 === 0"
-        [class.right]="i % 2 !== 0"
+        [class.left]="isLeft(i)"
+        [class.right]="!isLeft(i)"
         [attr.data-status]="event.status">
 
         <!-- LEFT SLOT -->
         <div class="slot left">
-          @if (i % 2 === 0) {
+          @if (isLeft(i)) {
             <div class="timeline-card">
               <!-- CARD CONTENT -->
               <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
@@ -44,7 +44,7 @@
 
         <!-- RIGHT SLOT -->
         <div class="slot right">
-          @if (i % 2 !== 0) {
+          @if (!isLeft(i)) {
             <div class="timeline-card">
               <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
             </div>

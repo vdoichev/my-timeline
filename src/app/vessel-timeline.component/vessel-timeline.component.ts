@@ -26,7 +26,7 @@ export class VesselTimelineComponent {
   trackById = (_: number, item: VesselTimelineEvent) => item.id;
 
   isLeft(index: number): boolean {
-    return index % 2 === 0;
+    return this.events[index]?.status !== "handling";
   }
 
   statusLabel(status: VesselStatus): string {
