@@ -67,14 +67,14 @@ export class App {
     {
       id: '1',
       actualDateTime: new Date('2025-09-01T08:30'),
-      description: 'Судно прибуло в порт.',
+      description: 'Судно пройшло Босфор',
       status: 'arrival'
     },
     {
       id: '2',
-      actualDateTime: new Date('2025-09-01T10:00'),
-      description: 'Початок вантажних робіт',
-      status: 'handling'
+      actualDateTime: new Date('2025-09-01T08:30'),
+      description: 'Судно прибуло на Суліну',
+      status: 'arrival'
     },
     {
       id: '3',
@@ -84,6 +84,12 @@ export class App {
     },
     {
       id: '4',
+      actualDateTime: new Date('2025-09-01T10:00'),
+      description: 'Початок вантажних робіт',
+      status: 'handling'
+    },
+    {
+      id: '5',
       actualDateTime: new Date('2025-09-02T18:00'),
       description: 'Судно покинуло порт',
       status: 'departure'
