@@ -1,9 +1,19 @@
 import { Component } from '@angular/core';
-import {MaterialTimelineComponent, TimelineItem} from './material-timeline-component/material-timeline-component';
+import {TimelineItem} from './material-timeline-component/material-timeline-component';
+import {VesselTimelineComponent} from './vessel-timeline.component/vessel-timeline.component';
+
+export type VesselStatus = 'arrival' | 'handling' | 'departure';
+
+export interface VesselTimelineEvent {
+  id: string;
+  actualDateTime: Date;
+  description: string;
+  status: VesselStatus;
+}
 
 @Component({
   selector: 'app-root',
-  imports: [MaterialTimelineComponent],
+  imports: [VesselTimelineComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -53,4 +63,28 @@ export class App {
     }
   ];
 
+  events: VesselTimelineEvent[] = [
+    {
+      id: '1',
+      actualDateTime: new Date('2025-09-01T08:30'),
+      description: 'Судно прибуло в порт',
+      status: 'arrival'
+    },
+    {
+      id: '2',
+      actualDateTime: new Date('2025-09-01T10:00'),
+      description: 'Початок вантажних робіт',
+      status: 'handling'
+    },
+    {
+      id: '3',
+      actualDateTime: new Date('2025-09-02T18:00'),
+      description: 'Судно покинуло порт',
+      status: 'departure'
+    }
+  ];
+
+  onAdd() {}
+  onEdit(event: VesselTimelineEvent) {}
+  onRemove(event: VesselTimelineEvent) {}
 }

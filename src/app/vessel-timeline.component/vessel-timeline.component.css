@@ -1,0 +1,117 @@
+.timeline {
+  position: relative;
+  padding: 32px 0;
+}
+
+/* CENTER LINE */
+.timeline-line {
+  position: absolute;
+  top: 120px;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: #e0e0e0;
+  transform: translateX(-50%);
+}
+
+.timeline-events {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* EVENT */
+.timeline-event {
+  position: relative;
+  display: flex;
+  width: 50%;
+  padding: 16px 40px;
+  box-sizing: border-box;
+}
+
+.timeline-event.left {
+  justify-content: flex-end;
+  text-align: right;
+  padding-right: 64px;
+}
+
+.timeline-event.right {
+  margin-left: 50%;
+  padding-left: 64px;
+}
+
+/* DOT */
+.timeline-dot {
+  position: absolute;
+  top: 24px;
+  left: 100%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.timeline-event.right .timeline-dot {
+  left: 0;
+  transform: translateX(-50%);
+}
+
+/* CARD */
+.timeline-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.12);
+  width: 100%;
+  max-width: 420px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.datetime {
+  font-weight: 600;
+}
+
+.status {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.description {
+  margin-bottom: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* STATUS COLORS */
+.timeline-event[data-status='arrival'] {
+  color: #1976d2;
+}
+
+.timeline-event[data-status='handling'] {
+  color: #f9a825;
+}
+
+.timeline-event[data-status='departure'] {
+  color: #388e3c;
+}
+
+/* ADD BUTTON */
+.timeline-add {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}

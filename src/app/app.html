@@ -1,1 +1,7 @@
-<app-material-timeline [timelines]="timeline"></app-material-timeline>
+<!--<app-material-timeline [timelines]="timeline"></app-material-timeline>-->
+<app-vessel-timeline
+  [events]="events"
+  (add)="onAdd()"
+  (edit)="onEdit($event)"
+  (remove)="onRemove($event)">
+</app-vessel-timeline>
