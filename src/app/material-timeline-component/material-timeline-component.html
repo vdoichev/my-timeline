@@ -1,6 +1,5 @@
 <mat-vertical-stepper
   class="timeline-stepper"
-  [linear]="false"
   [selectedIndex]="timelines.length - 1">
 
   <!-- DEFAULT ICON -->
@@ -24,20 +23,19 @@
     </mat-icon>
   </ng-template>
 
-  @for (item of timelines; track item.title){
+  @for (item of timelines; track item.id){
     <mat-step
-      [completed]="item.status === 'success'"
-      [hasError]="item.status === 'error'"
+      [completed]="true"
     >
 
       <ng-template matStepLabel>
         <div class="timeline-label">
-<!--          <mat-icon class="timeline-icon" [ngClass]="item.status">-->
-<!--            {{ item.icon || 'circle' }}-->
-<!--          </mat-icon>-->
 
           <div class="timeline-header">
-            <div class="title">{{ item.title }}</div>
+            @if (!item.isGroupChild){
+              <div class="title">{{ item.title }}</div>
+            }
+
             @if (item.date){
               <div class="date">{{ item.date }}</div>
             }

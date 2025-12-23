@@ -6,11 +6,13 @@ import {NgClass} from '@angular/common';
 export type TimelineStatus = 'success' | 'active' | 'warning' | 'error' | 'pending';
 
 export interface TimelineItem {
+  id: number,
   title: string;
   description?: string;
   date?: string;
   icon?: string;
   status: TimelineStatus;
+  isGroupChild?: boolean;
 }
 
 @Component({
