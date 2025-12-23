@@ -10,55 +10,69 @@
   <!-- CENTER LINE -->
   <div class="timeline-line"></div>
 
-  <!-- EVENTS -->
   <div class="timeline-events">
-    @for (event of events; track event.id; let i = $index){
+    @for (event of events; track event.id; let i = $index) {
+
       <div
         class="timeline-event"
-        [class.left]="isLeft(i)"
-        [class.right]="!isLeft(i)"
+        [class.left]="i % 2 === 0"
+        [class.right]="i % 2 !== 0"
         [attr.data-status]="event.status">
 
-        <!-- DOT -->
-        <div class="timeline-dot">
-          <mat-icon>
-            {{
-              event.status === 'arrival' ? 'directions_boat' :
-                event.status === 'handling' ? 'build' :
-                  'exit_to_app'
-            }}
-          </mat-icon>
-        </div>
-
-        <!-- CARD -->
-        <div class="timeline-card">
-
-          <div class="header">
-            <div class="datetime">
-              {{ event.actualDateTime | date:'dd.MM.yyyy HH:mm' }}
+        <!-- LEFT SLOT -->
+        <div class="slot left">
+          @if (i % 2 === 0) {
+            <div class="timeline-card">
+              <!-- CARD CONTENT -->
+              <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
             </div>
-
-            <span class="status">
-            {{ statusLabel(event.status) }}
-          </span>
-          </div>
-
-          <div class="description">
-            {{ event.description }}
-          </div>
-
-          <div class="actions">
-            <button mat-icon-button (click)="edit.emit(event)">
-              <mat-icon>edit</mat-icon>
-            </button>
-
-            <button mat-icon-button color="warn" (click)="remove.emit(event)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
-
+          }
         </div>
+
+        <!-- CENTER -->
+        <div class="center">
+          <div class="timeline-dot">
+            <mat-icon>
+              {{
+                event.status === 'arrival' ? 'directions_boat' :
+                  event.status === 'handling' ? 'build' :
+                    'exit_to_app'
+              }}
+            </mat-icon>
+          </div>
+        </div>
+
+        <!-- RIGHT SLOT -->
+        <div class="slot right">
+          @if (i % 2 !== 0) {
+            <div class="timeline-card">
+              <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
+            </div>
+          }
+        </div>
+
       </div>
     }
   </div>
 </div>
+
+<!-- CARD TEMPLATE -->
+<ng-template #card let-event>
+  <div class="header">
+    <div class="datetime">
+      {{ event.actualDateTime | date:'dd.MM.yyyy HH:mm' }}
+    </div>
+    <span class="status">{{ statusLabel(event.status) }}</span>
+  </div>
+
+  <div class="description">{{ event.description }}</div>
+
+  <div class="actions">
+    <button mat-icon-button (click)="edit.emit(event)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="remove.emit(event)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</ng-template>
