@@ -24,14 +24,19 @@
 
         <!-- CENTER -->
         <div class="center">
-          <div class="timeline-dot">
-            <mat-icon>
-              {{
-                event.status === 'arrival' ? 'directions_boat' :
-                  event.status === 'handling' ? 'build' :
-                    'exit_to_app'
-              }}
-            </mat-icon>
+          <div
+            class="timeline-dot"
+            [class.repeated]="isRepeatedStatus(i)"
+          >
+            @if (!isRepeatedStatus(i)) {
+              <mat-icon>
+                {{
+                  event.status === 'arrival' ? 'directions_boat' :
+                    event.status === 'handling' ? 'build' :
+                      'exit_to_app'
+                }}
+              </mat-icon>
+            }
           </div>
         </div>
 

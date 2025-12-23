@@ -45,6 +45,12 @@
   z-index: 2;
 }
 
+.timeline-dot.repeated {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
 .timeline {
   position: relative;
   --row-min-height: 140px;

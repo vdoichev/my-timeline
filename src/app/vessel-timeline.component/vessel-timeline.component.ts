@@ -34,4 +34,12 @@ export class VesselTimelineComponent {
       departure: 'Відхід'
     }[status];
   }
+
+  isRepeatedStatus(index: number): boolean {
+    if (index === 0) {
+      return false;
+    }
+
+    return this.events[index].status === this.events[index - 1].status;
+  }
 }
