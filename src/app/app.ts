@@ -67,7 +67,7 @@ export class App {
     {
       id: '1',
       actualDateTime: new Date('2025-09-01T08:30'),
-      description: 'Судно прибуло в порт',
+      description: 'Судно прибуло в порт. sdfadfadfadfadfadf adf ad fad fdddddddddddddddddddddd ddddddddddddddadfsvadfsafs dvafdsafdddddddddddd ddddddddddddddddd ',
       status: 'arrival'
     },
     {

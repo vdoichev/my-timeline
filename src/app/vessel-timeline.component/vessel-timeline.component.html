@@ -11,54 +11,54 @@
   <div class="timeline-line"></div>
 
   <!-- EVENTS -->
+  <div class="timeline-events">
+    @for (event of events; track event.id; let i = $index){
+      <div
+        class="timeline-event"
+        [class.left]="isLeft(i)"
+        [class.right]="!isLeft(i)"
+        [attr.data-status]="event.status">
 
-  @for (event of events; track event.id; let i = $index){
-    <div
-      class="timeline-event"
-      [class.left]="isLeft(i)"
-      [class.right]="!isLeft(i)"
-      [attr.data-status]="event.status">
+        <!-- DOT -->
+        <div class="timeline-dot">
+          <mat-icon>
+            {{
+              event.status === 'arrival' ? 'directions_boat' :
+                event.status === 'handling' ? 'build' :
+                  'exit_to_app'
+            }}
+          </mat-icon>
+        </div>
 
-      <!-- DOT -->
-      <div class="timeline-dot">
-        <mat-icon>
-          {{
-            event.status === 'arrival' ? 'directions_boat' :
-              event.status === 'handling' ? 'build' :
-                'exit_to_app'
-          }}
-        </mat-icon>
-      </div>
+        <!-- CARD -->
+        <div class="timeline-card">
 
-      <!-- CARD -->
-      <div class="timeline-card">
+          <div class="header">
+            <div class="datetime">
+              {{ event.actualDateTime | date:'dd.MM.yyyy HH:mm' }}
+            </div>
 
-        <div class="header">
-          <div class="datetime">
-            {{ event.actualDateTime | date:'dd.MM.yyyy HH:mm' }}
+            <span class="status">
+            {{ statusLabel(event.status) }}
+          </span>
           </div>
 
-          <span class="status">
-          {{ statusLabel(event.status) }}
-        </span>
+          <div class="description">
+            {{ event.description }}
+          </div>
+
+          <div class="actions">
+            <button mat-icon-button (click)="edit.emit(event)">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-icon-button color="warn" (click)="remove.emit(event)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
         </div>
-
-        <div class="description">
-          {{ event.description }}
-        </div>
-
-        <div class="actions">
-          <button mat-icon-button (click)="edit.emit(event)">
-            <mat-icon>edit</mat-icon>
-          </button>
-
-          <button mat-icon-button color="warn" (click)="remove.emit(event)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-
       </div>
-    </div>
-  }
-
+    }
+  </div>
 </div>
