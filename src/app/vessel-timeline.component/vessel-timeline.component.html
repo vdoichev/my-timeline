@@ -1,16 +1,9 @@
 <div class="timeline">
 
-  <!-- ADD BUTTON TOP -->
-  <div class="timeline-add top">
-    <button mat-fab color="primary" (click)="add.emit()">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-
-  <!-- CENTER LINE -->
-  <div class="timeline-line"></div>
-
   <div class="timeline-events">
+    <!-- CENTER LINE -->
+    <div class="timeline-line"></div>
+
     @for (event of events; track event.id; let i = $index) {
 
       <div
@@ -53,6 +46,13 @@
 
       </div>
     }
+  </div>
+
+  <!-- ADD BUTTON BOTTOM -->
+  <div class="timeline-add top">
+    <button mat-fab color="primary" (click)="add.emit()">
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
 </div>
 

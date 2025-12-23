@@ -23,10 +23,8 @@ export class VesselTimelineComponent {
   @Output() remove = new EventEmitter<VesselTimelineEvent>();
   @Output() add = new EventEmitter<void>();
 
-  trackById = (_: number, item: VesselTimelineEvent) => item.id;
-
   isLeft(index: number): boolean {
-    return this.events[index]?.status !== "handling";
+    return index % 2 === 0;
   }
 
   statusLabel(status: VesselStatus): string {
