@@ -75,20 +75,25 @@
 
 <!-- CARD TEMPLATE -->
 <ng-template #card let-event>
-  <div class="header">
-    <div class="datetime">
-      {{ event.actualDateTime | date:'dd.MM.yyyy HH:mm' }}
-    </div>
-  </div>
+  <mat-card class="timeline-card">
+    <mat-card-header>
+      <mat-card-title>
+        {{ event.actualDateTime | date:'dd.MM.yyyy HH:mm' }}
+      </mat-card-title>
+    </mat-card-header>
 
-  <div class="description">{{ event.description }}</div>
+    <mat-card-content>
+      {{ event.description }}
+    </mat-card-content>
 
-  <div class="actions">
-    <button mat-icon-button (click)="edit.emit(event)">
-      <mat-icon>edit</mat-icon>
-    </button>
-    <button mat-icon-button color="warn" (click)="remove.emit(event)">
-      <mat-icon>delete</mat-icon>
-    </button>
-  </div>
+    <mat-card-actions align="end">
+      <button mat-icon-button (click)="edit.emit(event)">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" (click)="remove.emit(event)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </ng-template>

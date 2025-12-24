@@ -93,17 +93,10 @@
 }
 
 .timeline-card {
-  height: 100%;
   min-width: 260px;
   max-width: 420px;
   width: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 16px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.12);
+  height: 100%;
 }
 
 .timeline-add {

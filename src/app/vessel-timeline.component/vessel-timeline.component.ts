@@ -3,6 +3,7 @@ import {VesselStatus, VesselTimelineEvent} from '../app';
 import {MatIcon} from '@angular/material/icon';
 import {DatePipe, NgTemplateOutlet} from '@angular/common';
 import {MatFabButton, MatIconButton} from '@angular/material/button';
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 
 @Component({
   selector: 'app-vessel-timeline',
@@ -11,7 +12,12 @@ import {MatFabButton, MatIconButton} from '@angular/material/button';
     DatePipe,
     MatIconButton,
     MatFabButton,
-    NgTemplateOutlet
+    NgTemplateOutlet,
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardContent,
+    MatCardActions
   ],
   templateUrl: './vessel-timeline.component.html',
   styleUrl: './vessel-timeline.component.css',
