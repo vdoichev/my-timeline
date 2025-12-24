@@ -9,6 +9,10 @@ export interface VesselTimelineEvent {
   actualDateTime: Date;
   description: string;
   status: VesselStatus;
+
+  terminal?: string;
+  berth?: string;
+  bollard?: string;
 }
 
 @Component({
@@ -80,13 +84,19 @@ export class App {
       id: '3',
       actualDateTime: new Date('2025-09-03T12:00'),
       description: 'Початок вантажних робіт',
-      status: 'handling'
+      status: 'handling',
+      terminal: "ТОВ 'Боріваж'",
+      berth:"Причал 25",
+      bollard:"23-26"
     },
     {
       id: '4',
       actualDateTime: new Date('2025-09-08T11:35'),
       description: 'Завершення вантажних робіт',
-      status: 'handling'
+      status: 'handling',
+      terminal: "ТОВ 'ПЕРША ОДЕСЬКА ТОРГІВЕЛЬНА КОМПАНІЯ'",
+      berth:"Причал 15",
+      bollard:"11"
     },
     {
       id: '5',

@@ -95,7 +95,36 @@
     </mat-card-header>
 
     <mat-card-content>
-      {{ event.description }}
+      <!-- DESCRIPTION -->
+      <div class="description">
+        {{ event.description }}
+      </div>
+
+      <!-- META INFO -->
+      <div class="meta">
+
+        @if (event.terminal) {
+          <div class="meta-row">
+            <mat-icon>domain</mat-icon>
+            <span>{{ event.terminal }}</span>
+          </div>
+        }
+
+        @if (event.berth) {
+          <div class="meta-row">
+            <mat-icon>place</mat-icon>
+            <span>{{ event.berth }}</span>
+          </div>
+        }
+
+        @if (event.bollard) {
+          <div class="meta-row">
+            <mat-icon>anchor</mat-icon>
+            <span>{{ event.bollard }}</span>
+          </div>
+        }
+
+      </div>
     </mat-card-content>
 
     <mat-card-actions align="end">

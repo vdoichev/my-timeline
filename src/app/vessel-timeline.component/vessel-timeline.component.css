@@ -144,6 +144,29 @@
   margin-bottom: 16px;
 }
 
+.timeline-card .description {
+  margin-bottom: 8px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.meta-row mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
 .timeline-event[data-status='arrival'] { color: #f9a825; }
 .timeline-event[data-status='handling'] { color: #1976d2; }
 .timeline-event[data-status='departure'] { color: #388e3c; }
