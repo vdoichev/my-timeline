@@ -6,7 +6,9 @@ import {MatFabButton, MatIconButton} from '@angular/material/button';
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 
 interface TimelineDayGroup {
+  key: string;
   date: Date;
+  status: VesselStatus;
   events: VesselTimelineEvent[];
 }
 
@@ -42,7 +44,9 @@ export class VesselTimelineComponent {
 
       if (!map.has(key)) {
         map.set(key, {
+          key,
           date: new Date(event.actualDateTime),
+          status: event.status,
           events: []
         });
       }
