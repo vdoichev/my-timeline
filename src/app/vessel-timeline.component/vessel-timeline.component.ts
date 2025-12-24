@@ -3,7 +3,13 @@ import {VesselStatus, VesselTimelineEvent} from '../app';
 import {MatIcon} from '@angular/material/icon';
 import {DatePipe, NgTemplateOutlet} from '@angular/common';
 import {MatFabButton, MatIconButton} from '@angular/material/button';
-import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
+import {
+  MatCard,
+  MatCardContent,
+  MatCardHeader,
+  MatCardTitle,
+  MatCardTitleGroup
+} from '@angular/material/card';
 
 interface TimelineDayGroup {
   key: string;
@@ -24,7 +30,7 @@ interface TimelineDayGroup {
     MatCardHeader,
     MatCardTitle,
     MatCardContent,
-    MatCardActions
+    MatCardTitleGroup
   ],
   templateUrl: './vessel-timeline.component.html',
   styleUrl: './vessel-timeline.component.css',
