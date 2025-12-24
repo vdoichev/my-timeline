@@ -81,6 +81,16 @@
   --dot-gap: 6px;
 }
 
+.timeline-date {
+  position: relative;
+  z-index: 3;
+  margin: 24px 0;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(0,0,0,.6);
+}
+
 .timeline-line {
   position: absolute;
   left: 50%;

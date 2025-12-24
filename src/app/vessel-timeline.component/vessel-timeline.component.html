@@ -3,66 +3,69 @@
   <div class="timeline-events">
     <!-- CENTER LINE -->
     <div class="timeline-line"></div>
+    @for (group of groupedEvents; track group.date.getTime()) {
+      <!-- DATE MARKER -->
+      <div class="timeline-date">
+        {{ group.date | date:'dd.MM.yyyy' }}
+      </div>
 
-    @for (event of events; track event.id; let i = $index) {
+      @for (event of group.events; track event.id; let i = $index) {
 
-      <div
-        class="timeline-event"
-        [class.left]="isLeft(i)"
-        [class.right]="!isLeft(i)"
-        [attr.data-status]="event.status">
+        <div
+          class="timeline-event"
+          [class.left]="isLeft(i)"
+          [class.right]="!isLeft(i)"
+          [attr.data-status]="event.status">
 
-        <!-- LEFT SLOT -->
-        <div class="slot left">
-          @if (isLeft(i)) {
-            <div class="timeline-card">
+          <!-- LEFT SLOT -->
+          <div class="slot left">
+            @if (isLeft(i)) {
               <!-- CARD CONTENT -->
               <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
-            </div>
-          }
+            }
 
-          @if (!isLeft(i) && !isRepeatedStatus(i)) {
-            <div class="timeline-status">
-              {{ statusLabel(event.status) }}
-            </div>
-          }
-        </div>
-
-        <!-- CENTER -->
-        <div class="center">
-          <div
-            class="timeline-dot"
-            [class.repeated]="isRepeatedStatus(i)"
-          >
-            @if (!isRepeatedStatus(i)) {
-              <mat-icon>
-                {{
-                  event.status === 'arrival' ? 'directions_boat' :
-                    event.status === 'handling' ? 'build' :
-                      'exit_to_app'
-                }}
-              </mat-icon>
+            @if (!isLeft(i) && !isRepeatedStatusInGroup(group.events, i)) {
+              <div class="timeline-status">
+                {{ statusLabel(event.status) }}
+              </div>
             }
           </div>
-        </div>
 
-        <!-- RIGHT SLOT -->
-        <div class="slot right">
-          @if (!isLeft(i)) {
-            <div class="timeline-card">
+          <!-- CENTER -->
+          <div class="center">
+            <div
+              class="timeline-dot"
+              [class.repeated]="isRepeatedStatusInGroup(group.events, i)"
+            >
+              @if (!isRepeatedStatusInGroup(group.events, i)) {
+                <mat-icon>
+                  {{
+                    event.status === 'arrival' ? 'directions_boat' :
+                      event.status === 'handling' ? 'build' :
+                        'exit_to_app'
+                  }}
+                </mat-icon>
+              }
+            </div>
+          </div>
+
+          <!-- RIGHT SLOT -->
+          <div class="slot right">
+            @if (!isLeft(i)) {
               <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
-            </div>
-          }
+            }
 
-          @if (isLeft(i) && !isRepeatedStatus(i)) {
-            <div class="timeline-status">
-              {{ statusLabel(event.status) }}
-            </div>
-          }
+            @if (isLeft(i) && !isRepeatedStatusInGroup(group.events, i)) {
+              <div class="timeline-status">
+                {{ statusLabel(event.status) }}
+              </div>
+            }
+          </div>
+
         </div>
-
-      </div>
+      }
     }
+
   </div>
 
   <!-- ADD BUTTON BOTTOM -->
@@ -78,7 +81,7 @@
   <mat-card class="timeline-card">
     <mat-card-header>
       <mat-card-title>
-        {{ event.actualDateTime | date:'dd.MM.yyyy HH:mm' }}
+        {{ event.actualDateTime | date:'HH:mm' }}
       </mat-card-title>
     </mat-card-header>
 
