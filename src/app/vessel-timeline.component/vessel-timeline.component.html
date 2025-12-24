@@ -3,7 +3,7 @@
   <div class="timeline-events">
     <!-- CENTER LINE -->
     <div class="timeline-line"></div>
-    @for (group of groupedEvents; track group.date.getTime()) {
+    @for (group of groupedEvents; track group.date.getTime(); let gi = $index) {
       <!-- DATE MARKER -->
       <div
         class="timeline-date"
@@ -22,18 +22,18 @@
 
         <div
           class="timeline-event"
-          [class.left]="isLeft(i)"
-          [class.right]="!isLeft(i)"
+          [class.left]="isLeft(getFlatIndex(gi, i))"
+          [class.right]="!isLeft(getFlatIndex(gi, i))"
           [attr.data-status]="event.status">
 
           <!-- LEFT SLOT -->
           <div class="slot left">
-            @if (isLeft(i)) {
+            @if (isLeft(getFlatIndex(gi, i))) {
               <!-- CARD CONTENT -->
               <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
             }
 
-            @if (!isLeft(i) && !isRepeatedStatusInGroup(group.events, i)) {
+            @if (!isLeft(getFlatIndex(gi, i)) && !isRepeatedStatusGlobal(gi, i)) {
               <div class="timeline-status">
                 {{ statusLabel(event.status) }}
               </div>
@@ -44,9 +44,9 @@
           <div class="center">
             <div
               class="timeline-dot"
-              [class.repeated]="isRepeatedStatusInGroup(group.events, i)"
+              [class.repeated]="isRepeatedStatusGlobal(gi, i)"
             >
-              @if (!isRepeatedStatusInGroup(group.events, i)) {
+              @if (!isRepeatedStatusGlobal(gi, i)) {
                 <mat-icon>
                   {{
                     event.status === 'arrival' ? 'directions_boat' :
@@ -60,11 +60,11 @@
 
           <!-- RIGHT SLOT -->
           <div class="slot right">
-            @if (!isLeft(i)) {
+            @if (!isLeft(getFlatIndex(gi, i))) {
               <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
             }
 
-            @if (isLeft(i) && !isRepeatedStatusInGroup(group.events, i)) {
+            @if (isLeft(getFlatIndex(gi, i)) && !isRepeatedStatusGlobal(gi, i)) {
               <div class="timeline-status">
                 {{ statusLabel(event.status) }}
               </div>

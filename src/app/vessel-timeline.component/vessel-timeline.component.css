@@ -107,11 +107,11 @@
 }
 
 .timeline-date[data-status='arrival'] {
-  --date-color: #1976d2;
+  --date-color: #f9a825;
 }
 
 .timeline-date[data-status='handling'] {
-  --date-color: #f9a825;
+  --date-color: #1976d2;
 }
 
 .timeline-date[data-status='departure'] {
@@ -144,6 +144,6 @@
   margin-bottom: 16px;
 }
 
-.timeline-event[data-status='arrival'] { color: #1976d2; }
-.timeline-event[data-status='handling'] { color: #f9a825; }
+.timeline-event[data-status='arrival'] { color: #f9a825; }
+.timeline-event[data-status='handling'] { color: #1976d2; }
 .timeline-event[data-status='departure'] { color: #388e3c; }

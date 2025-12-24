@@ -57,9 +57,38 @@ export class VesselTimelineComponent {
     return Array.from(map.values());
   }
 
-  isRepeatedStatusInGroup(events: VesselTimelineEvent[], index: number): boolean {
-    if (index === 0) return false;
-    return events[index].status === events[index - 1].status;
+  getFlatIndex(groupIndex: number, eventIndex: number): number {
+    let index = 0;
+
+    for (let g = 0; g < groupIndex; g++) {
+      index += this.groupedEvents[g].events.length;
+    }
+
+    return index + eventIndex;
+  }
+
+  isRepeatedStatusGlobal(
+    groupIndex: number,
+    eventIndex: number
+  ): boolean {
+    // перша подія взагалі
+    if (groupIndex === 0 && eventIndex === 0) {
+      return false;
+    }
+
+    // попередня подія
+    if (eventIndex > 0) {
+      return (
+        this.groupedEvents[groupIndex].events[eventIndex - 1].status ===
+        this.groupedEvents[groupIndex].events[eventIndex].status
+      );
+    }
+
+    // перша подія дня → порівнюємо з останньою з попереднього дня
+    const prevGroup = this.groupedEvents[groupIndex - 1];
+    const prevEvent = prevGroup.events[prevGroup.events.length - 1];
+
+    return prevEvent.status === this.groupedEvents[groupIndex].events[eventIndex].status;
   }
 
   isLeft(index: number): boolean {
