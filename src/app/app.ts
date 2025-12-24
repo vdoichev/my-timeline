@@ -72,25 +72,25 @@ export class App {
     },
     {
       id: '2',
-      actualDateTime: new Date('2025-09-01T08:30'),
+      actualDateTime: new Date('2025-09-01T23:15'),
       description: 'Судно прибуло на Суліну',
       status: 'arrival'
     },
     {
       id: '3',
-      actualDateTime: new Date('2025-09-01T10:00'),
+      actualDateTime: new Date('2025-09-03T12:00'),
       description: 'Початок вантажних робіт',
       status: 'handling'
     },
     {
       id: '4',
-      actualDateTime: new Date('2025-09-01T10:00'),
-      description: 'Початок вантажних робіт',
+      actualDateTime: new Date('2025-09-08T11:35'),
+      description: 'Завершення вантажних робіт',
       status: 'handling'
     },
     {
       id: '5',
-      actualDateTime: new Date('2025-09-02T18:00'),
+      actualDateTime: new Date('2025-09-08T18:00'),
       description: 'Судно покинуло порт',
       status: 'departure'
     }

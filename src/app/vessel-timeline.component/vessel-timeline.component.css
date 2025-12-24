@@ -95,6 +95,7 @@
   text-transform: uppercase;
 
   color: var(--date-color);
+  z-index: 3;
 }
 
 .timeline-date .label {
@@ -120,7 +121,7 @@
 .timeline-line {
   position: absolute;
   left: 50%;
-  top: calc(var(--row-min-height, 140px) / 2);
+  top: 30px;
   bottom: 0;
   width: 2px;
   transform: translateX(-50%);
