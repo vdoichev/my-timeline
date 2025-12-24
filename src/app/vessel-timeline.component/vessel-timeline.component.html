@@ -22,7 +22,7 @@
           }
 
           @if (!isLeft(i) && !isRepeatedStatus(i)) {
-            <div class="timeline-status align-right">
+            <div class="timeline-status">
               {{ statusLabel(event.status) }}
             </div>
           }
@@ -55,7 +55,7 @@
           }
 
           @if (isLeft(i) && !isRepeatedStatus(i)) {
-            <div class="timeline-status align-left">
+            <div class="timeline-status">
               {{ statusLabel(event.status) }}
             </div>
           }

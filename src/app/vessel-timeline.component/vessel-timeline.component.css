@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: 1fr 80px 1fr;
   align-items: center;
-  grid-auto-rows: minmax(140px, auto);
+  /*grid-auto-rows: minmax(140px, auto);*/
   margin: 0 auto;
   padding: 0;
   position: relative;
@@ -17,37 +17,36 @@
 .slot {
   display: flex;
   align-items: center;
+  gap: 0; /* 🔥 0px між статусом і center */
 }
 
+/* LEFT GRID COLUMN */
 .slot.left {
   justify-content: flex-end;
 }
 
+/* RIGHT GRID COLUMN */
 .slot.right {
   justify-content: flex-start;
 }
 
-
 .timeline-status {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   font-size: 11px;
   white-space: nowrap;
   opacity: 0.8;
 }
 
-/* зліва від center */
-.timeline-status.align-right {
-  margin-left: auto;   /* 🔥 */
-  padding-right: 0;    /* 0px до center */
+/* статус у лівому слоті → притискаємо до center */
+.slot.left .timeline-status {
+  margin-left: auto;
+  padding-right: 0;
   text-align: right;
 }
 
-/* справа від center */
-.timeline-status.align-left {
-  margin-right: auto;  /* 🔥 */
-  padding-left: 0;     /* 0px до center */
+/* статус у правому слоті → притискаємо до center */
+.slot.right .timeline-status {
+  margin-right: auto;
+  padding-left: 0;
   text-align: left;
 }
 
