@@ -79,6 +79,7 @@
   --row-min-height: 140px;
   --dot-size: 32px;
   --dot-gap: 6px;
+  --date-height: 32px;
 }
 
 .timeline-date {
@@ -121,7 +122,7 @@
 .timeline-line {
   position: absolute;
   left: 50%;
-  top: 30px;
+  top: var(--date-height);
   bottom: 0;
   width: 2px;
   transform: translateX(-50%);
@@ -132,7 +133,7 @@
 .timeline-card {
   min-width: 260px;
   max-width: 420px;
-  width: fit-content;
+  width: auto;
   height: 100%;
 }
 

@@ -1,4 +1,4 @@
-<div class="timeline">
+<div class="timeline timeline--narrow">
 
   <div class="timeline-events">
     <!-- CENTER LINE -->
@@ -19,21 +19,21 @@
       </div>
 
       @for (event of group.events; track event.id; let i = $index) {
-
+        @let flatIndex = getFlatIndex(gi, i);
         <div
           class="timeline-event"
-          [class.left]="isLeft(getFlatIndex(gi, i))"
-          [class.right]="!isLeft(getFlatIndex(gi, i))"
+          [class.left]="isLeft(flatIndex)"
+          [class.right]="!isLeft(flatIndex)"
           [attr.data-status]="event.status">
 
           <!-- LEFT SLOT -->
           <div class="slot left">
-            @if (isLeft(getFlatIndex(gi, i))) {
+            @if (isLeft(flatIndex)) {
               <!-- CARD CONTENT -->
               <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
             }
 
-            @if (!isLeft(getFlatIndex(gi, i)) && !isRepeatedStatusGlobal(gi, i)) {
+            @if (!isLeft(flatIndex) && !isRepeatedStatusGlobal(gi, i)) {
               <div class="timeline-status">
                 {{ statusLabel(event.status) }}
               </div>
@@ -60,11 +60,11 @@
 
           <!-- RIGHT SLOT -->
           <div class="slot right">
-            @if (!isLeft(getFlatIndex(gi, i))) {
+            @if (!isLeft(flatIndex)) {
               <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
             }
 
-            @if (isLeft(getFlatIndex(gi, i)) && !isRepeatedStatusGlobal(gi, i)) {
+            @if (isLeft(flatIndex) && !isRepeatedStatusGlobal(gi, i)) {
               <div class="timeline-status">
                 {{ statusLabel(event.status) }}
               </div>
