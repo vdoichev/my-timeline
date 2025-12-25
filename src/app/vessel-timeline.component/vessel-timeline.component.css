@@ -8,7 +8,6 @@
   display: grid;
   grid-template-columns: 1fr 80px 1fr;
   align-items: center;
-  /*grid-auto-rows: minmax(140px, auto);*/
   margin: 0 auto;
   padding: 0;
   position: relative;
@@ -17,7 +16,7 @@
 .slot {
   display: flex;
   align-items: center;
-  gap: 0; /* 🔥 0px між статусом і center */
+  gap: 0;
 }
 
 /* LEFT GRID COLUMN */
