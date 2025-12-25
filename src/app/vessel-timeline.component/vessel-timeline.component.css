@@ -1,5 +1,5 @@
 .timeline-events {
-  position: relative;
+  /*position: relative;*/
   display: flex;
   flex-direction: column;
 }
@@ -7,7 +7,7 @@
 .timeline-event {
   display: grid;
   grid-template-columns: 1fr 80px 1fr;
-  align-items: center;
+  /*align-items: center;*/
   margin: 0 auto;
   padding: 0;
   position: relative;
@@ -50,9 +50,7 @@
 }
 
 .center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /*position: relative;*/
 }
 
 .timeline-dot {
@@ -65,6 +63,10 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
+  position: absolute;
+  /*left: var(--timeline-x);*/
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .timeline-dot.repeated {
@@ -79,9 +81,13 @@
   --dot-size: 32px;
   --dot-gap: 6px;
   --date-height: 32px;
+  --timeline-x: 50%;
 }
 
 .timeline-date {
+  position: relative;
+  left: var(--timeline-x);
+  transform: translateX(-50%);
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -120,11 +126,11 @@
 
 .timeline-line {
   position: absolute;
-  left: 50%;
+  left: var(--timeline-x);
+  transform: translateX(-50%);
   top: var(--date-height);
   bottom: 0;
   width: 2px;
-  transform: translateX(-50%);
   background: #e0e0e0;
   z-index: 1;
 }
@@ -170,3 +176,56 @@
 .timeline-event[data-status='arrival'] { color: #f9a825; }
 .timeline-event[data-status='handling'] { color: #1976d2; }
 .timeline-event[data-status='departure'] { color: #388e3c; }
+
+@media (max-width: 650px) {
+  .timeline {
+    --timeline-x: 20px;
+  }
+
+  .timeline-event {
+    grid-template-columns: 40px 1fr;
+    column-gap: 12px;
+  }
+
+  /* CENTER → перша колонка */
+  .center {
+    /*grid-column: 1;*/
+    justify-content: flex-start;
+  }
+
+  /* LEFT / RIGHT slots → друга колонка */
+  .slot.left,
+  .slot.right {
+    grid-column: 2;
+    justify-content: flex-start !important;
+  }
+
+  .timeline-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .timeline-line {
+    /*left: 20px;*/
+    transform: none;
+  }
+
+  .timeline-status {
+    font-size: 11px;
+    margin-bottom: 4px;
+    opacity: 0.7;
+  }
+
+  .slot.left .timeline-status,
+  .slot.right .timeline-status {
+    margin: 0 0 4px 0;
+  }
+
+  .timeline-date {
+    font-size: 11px;
+  }
+
+  .timeline-dot {
+    transform: none;
+  }
+}
