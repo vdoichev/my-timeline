@@ -36,13 +36,23 @@ interface TimelineDayGroup {
   styleUrl: './vessel-timeline.component.css',
 })
 export class VesselTimelineComponent {
-  @Input() events: VesselTimelineEvent[] = [];
+  private _events: VesselTimelineEvent[] = [];
+  groupedEvents: TimelineDayGroup[] = [];
+
+  @Input() set events(value: VesselTimelineEvent[]) {
+    this._events = value;
+    this.groupedEvents = this.buildGroups();
+  }
+
+  get events(): VesselTimelineEvent[] {
+    return this._events;
+  }
 
   @Output() edit = new EventEmitter<VesselTimelineEvent>();
   @Output() remove = new EventEmitter<VesselTimelineEvent>();
   @Output() add = new EventEmitter<void>();
 
-  get groupedEvents(): TimelineDayGroup[] {
+  buildGroups(): TimelineDayGroup[] {
     const map = new Map<string, TimelineDayGroup>();
 
     for (const event of this.events) {
