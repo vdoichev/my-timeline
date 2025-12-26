@@ -179,11 +179,11 @@
 
 @media (max-width: 650px) {
   .timeline {
-    --timeline-x: 20px;
+    --timeline-x: 44px;
   }
 
   .timeline-event {
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 62px 1fr;
     column-gap: 12px;
   }
 
@@ -206,8 +206,7 @@
   }
 
   .timeline-line {
-    /*left: 20px;*/
-    transform: none;
+    transform: translateX(-50%);
   }
 
   .timeline-status {
@@ -222,10 +221,17 @@
   }
 
   .timeline-date {
+    margin-left: var(--timeline-x);
     font-size: 11px;
   }
 
   .timeline-dot {
     transform: none;
+  }
+
+  .timeline-add button {
+    position: absolute;
+    left: var(--timeline-x);
+    transform: translateX(-50%);
   }
 }
