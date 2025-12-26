@@ -77,9 +77,7 @@
 
 .timeline {
   position: relative;
-  --row-min-height: 140px;
   --dot-size: 32px;
-  --dot-gap: 6px;
   --date-height: 32px;
   --timeline-x: 50%;
 }
