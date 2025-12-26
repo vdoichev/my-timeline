@@ -47,11 +47,7 @@
             >
               @if (!event.isRepeated) {
                 <mat-icon>
-                  {{
-                    event.status === 'arrival' ? 'directions_boat' :
-                      event.status === 'handling' ? 'build' :
-                        'exit_to_app'
-                  }}
+                  {{STATUS_ICON[event.status]}}
                 </mat-icon>
               }
             </div>

@@ -11,8 +11,6 @@ import {
   MatCardTitleGroup
 } from '@angular/material/card';
 
-
-
 interface TimelineEventVM extends VesselTimelineEvent {
   flatIndex: number;
   isRepeated: boolean;
@@ -55,6 +53,18 @@ export class VesselTimelineComponent {
   get events(): VesselTimelineEvent[] {
     return this._events;
   }
+
+  STATUS_LABEL: Record<VesselStatus, string> = {
+    arrival: 'Підхід',
+    handling: 'Під обробкою',
+    departure: 'Відхід'
+  };
+
+  STATUS_ICON: Record<VesselStatus, string> = {
+    arrival: 'directions_boat',
+    handling: 'build',
+    departure: 'exit_to_app'
+  };
 
   @Output() edit = new EventEmitter<VesselTimelineEvent>();
   @Output() remove = new EventEmitter<VesselTimelineEvent>();
@@ -125,10 +135,6 @@ export class VesselTimelineComponent {
   }
 
   statusLabel(status: VesselStatus): string {
-    return {
-      arrival: 'Підхід',
-      handling: 'Під обробкою',
-      departure: 'Відхід'
-    }[status];
+    return this.STATUS_LABEL[status];
   }
 }
