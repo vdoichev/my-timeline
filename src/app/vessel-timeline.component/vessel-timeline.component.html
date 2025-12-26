@@ -3,7 +3,7 @@
   <div class="timeline-events">
     <!-- CENTER LINE -->
     <div class="timeline-line"></div>
-    @for (group of groupedEvents; track group.date.getTime(); let gi = $index) {
+    @for (group of groupedEvents; track group.date.getTime()) {
       <!-- DATE MARKER -->
       <div
         class="timeline-date"
@@ -18,22 +18,21 @@
         <span class="line"></span>
       </div>
 
-      @for (event of group.events; track event.id; let i = $index) {
-        @let flatIndex = getFlatIndex(gi, i);
+      @for (event of group.events; track event.id) {
         <div
           class="timeline-event"
-          [class.left]="isLeft(flatIndex)"
-          [class.right]="!isLeft(flatIndex)"
+          [class.left]="event.flatIndex % 2 === 0"
+          [class.right]="!(event.flatIndex % 2 === 0)"
           [attr.data-status]="event.status">
 
           <!-- LEFT SLOT -->
           <div class="slot left">
-            @if (isLeft(flatIndex)) {
+            @if (event.flatIndex % 2 === 0) {
               <!-- CARD CONTENT -->
               <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
             }
 
-            @if (!isLeft(flatIndex) && !isRepeatedStatusGlobal(gi, i)) {
+            @if (!(event.flatIndex % 2 === 0) && !event.isRepeated) {
               <div class="timeline-status">
                 {{ statusLabel(event.status) }}
               </div>
@@ -44,9 +43,9 @@
           <div class="center">
             <div
               class="timeline-dot"
-              [class.repeated]="isRepeatedStatusGlobal(gi, i)"
+              [class.repeated]="event.isRepeated"
             >
-              @if (!isRepeatedStatusGlobal(gi, i)) {
+              @if (!event.isRepeated) {
                 <mat-icon>
                   {{
                     event.status === 'arrival' ? 'directions_boat' :
@@ -60,11 +59,11 @@
 
           <!-- RIGHT SLOT -->
           <div class="slot right">
-            @if (!isLeft(flatIndex)) {
+            @if (!(event.flatIndex % 2 === 0)) {
               <ng-container *ngTemplateOutlet="card; context:{ $implicit: event }"></ng-container>
             }
 
-            @if (isLeft(flatIndex) && !isRepeatedStatusGlobal(gi, i)) {
+            @if ((event.flatIndex % 2 === 0) && !event.isRepeated) {
               <div class="timeline-status">
                 {{ statusLabel(event.status) }}
               </div>

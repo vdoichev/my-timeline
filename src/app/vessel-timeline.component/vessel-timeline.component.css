@@ -175,7 +175,7 @@
 .timeline-event[data-status='handling'] { color: #1976d2; }
 .timeline-event[data-status='departure'] { color: #388e3c; }
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
   .timeline {
     --timeline-x: 44px;
   }

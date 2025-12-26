@@ -11,11 +11,18 @@ import {
   MatCardTitleGroup
 } from '@angular/material/card';
 
+
+
+interface TimelineEventVM extends VesselTimelineEvent {
+  flatIndex: number;
+  isRepeated: boolean;
+}
+
 interface TimelineDayGroup {
   key: string;
   date: Date;
   status: VesselStatus;
-  events: VesselTimelineEvent[];
+  events: TimelineEventVM[];
 }
 
 @Component({
@@ -42,6 +49,7 @@ export class VesselTimelineComponent {
   @Input() set events(value: VesselTimelineEvent[]) {
     this._events = value;
     this.groupedEvents = this.buildGroups();
+    this.recalcFlatIndexAndRepeated()
   }
 
   get events(): VesselTimelineEvent[] {
@@ -67,10 +75,19 @@ export class VesselTimelineComponent {
         });
       }
 
-      map.get(key)!.events.push(event);
+      map.get(key)!.events.push({...event, flatIndex: 0, isRepeated: false});
     }
 
     return Array.from(map.values());
+  }
+
+  recalcFlatIndexAndRepeated(){
+    for (let groupIndex = 0; groupIndex < this.groupedEvents.length; groupIndex++) {
+      for (let eventIndex = 0; eventIndex < this.groupedEvents[groupIndex].events.length; eventIndex++) {
+        this.groupedEvents[groupIndex].events[eventIndex].flatIndex = this.getFlatIndex(groupIndex, eventIndex);
+        this.groupedEvents[groupIndex].events[eventIndex].isRepeated = this.isRepeatedStatusGlobal(groupIndex, eventIndex);
+      }
+    }
   }
 
   getFlatIndex(groupIndex: number, eventIndex: number): number {
@@ -105,10 +122,6 @@ export class VesselTimelineComponent {
     const prevEvent = prevGroup.events[prevGroup.events.length - 1];
 
     return prevEvent.status === this.groupedEvents[groupIndex].events[eventIndex].status;
-  }
-
-  isLeft(index: number): boolean {
-    return index % 2 === 0;
   }
 
   statusLabel(status: VesselStatus): string {
