@@ -66,7 +66,6 @@ export class VesselTimelineComponent {
     departure: 'exit_to_app'
   };
 
-  @Output() edit = new EventEmitter<VesselTimelineEvent>();
   @Output() remove = new EventEmitter<VesselTimelineEvent>();
   @Output() add = new EventEmitter<void>();
 

@@ -107,6 +107,5 @@ export class App {
   ];
 
   onAdd() {}
-  onEdit(event: VesselTimelineEvent) {}
   onRemove(event: VesselTimelineEvent) {}
 }
